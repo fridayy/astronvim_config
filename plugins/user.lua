@@ -9,4 +9,17 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  {
+    "Shatur/neovim-ayu",
+    lazy = true
+  },
+  {
+    "shaunsingh/nord.nvim",
+    lazy = true
+  },
+  {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = true
+  }
 }
