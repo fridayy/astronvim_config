@@ -61,19 +61,6 @@ return {
     },
   },
 
-  -- LuaSnip Options
-  luasnip = {
-    -- Add paths for including more VS Code style snippets in luasnip
-    -- vscode_snippet_paths = {},
-    vscode = {
-      paths = { "./lua/user/snippets" }
-    },
-    -- Extend filetypes
-    filetype_extend = {
-      -- javascript = { "javascriptreact" },
-    },
-  },
-
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
@@ -92,3 +79,4 @@ return {
     -- }
   end,
 }
+
