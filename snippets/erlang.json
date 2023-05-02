@@ -17,6 +17,22 @@
     "description": "Default erlang module doc"
   }
   ,
+  "snippet_log": {
+    "prefix": ["snippet_log"],
+    "body": [
+      "?LOG_(#{event => \"\", info => #{\"\" => \"\"}})"
+    ]
+  }
+  ,
+  "snippet_section": {
+    "prefix": ["snippet_section"],
+    "body": [
+      "%% ==================================================================",
+      "%% private parts",
+      "%% =================================================================="
+    ]
+  }
+  ,
   "snippet_gen_server": {
     "prefix": ["snippet_gen_server"],
     "body": [
@@ -52,22 +68,22 @@
       "",
       "",
       "handle_call(Message, _From, State) ->",
-      "\t?LOG_WARNING(#{event => unhandled_call, message => Message}),",
+      "\t?LOG_WARNING(#{event => \"unhandled_call\", info => #{\"message\" => Message}}),",
       "\t{reply, ok, State}.",
       "",
       "",
       "handle_cast(Message, State) ->",
-      "\t?LOG_WARNING(#{event => unhandled_cast, message => Message}),",
+      "\t?LOG_WARNING(#{event => \"unhandled_cast\", info => #{\"message\" => Message}}),",
       "\t{noreply, State}.",
       "",
       "",
       "handle_info(Message, State) ->",
-      "\t?LOG_WARNING(#{event => unhandled_info, message => Message}),",
+      "\t?LOG_WARNING(#{event => \"unhandled_info\", info => #{\"message\" => Message}}),",
       "\t{noreply, State}.",
       "",
       "",
       "terminate(Reason, State) ->",
-      "\t?LOG_WARNING(#{event => terminated, reason => Reason, state => State}),",
+      "\t?LOG_WARNING(#{event => \"terminated\", info => #{\"reason\" => Reason, \"state\" => State}}),",
       "\tok."
     ],
     "description": "Minimal gen_server"
@@ -99,5 +115,38 @@
     "\t}."
     ],
     "description": "Minimal supervisor snippet"
+  },
+  "snippet_ct_test": {
+    "prefix": ["snippet_ct_test"],
+    "description": "Minimal ct test",
+    "body": [
+      "-module($TM_FILENAME_BASE).",
+      "-compile([export_all]).",
+      "-compile(nowarn_export_all).",
+      "",
+      "-include_lib(\"stdlib/include/assert.hrl\").",
+      "",
+      "",
+      "%% fixture",
+      "%%===================================================================",
+      "all() ->",
+      "    [",
+        "     some_test",
+        "    ].",
+        "",
+        "init_per_suite(Config) ->",
+        "   Config.",
+        "",
+        "end_per_suite(_Config) ->",
+        "    ok.", 
+        "",
+        "%% tests",
+        "%%===================================================================",
+        "some_test(Config) ->",
+        "  Config.",
+        "",
+        "%% private parts",
+        "%%=================================================================="
+    ]
   }
 }
